@@ -30,7 +30,13 @@ export default function DareScreen() {
   if (!currentStoryId || !currentNodeId) return null;
 
   const story = loadStory(currentStoryId);
-  const node = getNode(story, currentNodeId) as DareNode;
+  const rawNode = getNode(story, currentNodeId);
+
+  if (rawNode.type !== 'dare') {
+    return null;
+  }
+
+  const node = rawNode as DareNode;
   const rawText = getNodeText(node, spiceLevel);
   const text = interpolatePlayerNames(rawText, players, currentPlayerIndex);
   const targetPlayer = resolvePlayerTarget(node.targetPlayer, players, currentPlayerIndex);

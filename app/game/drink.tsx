@@ -28,7 +28,13 @@ export default function DrinkScreen() {
   if (!currentStoryId || !currentNodeId) return null;
 
   const story = loadStory(currentStoryId);
-  const node = getNode(story, currentNodeId) as DrinkNode;
+  const rawNode = getNode(story, currentNodeId);
+
+  if (rawNode.type !== 'drink') {
+    return null;
+  }
+
+  const node = rawNode as DrinkNode;
   const targetPlayer = resolvePlayerTarget(node.targetPlayer, players, currentPlayerIndex);
 
   // Handle sober mode
