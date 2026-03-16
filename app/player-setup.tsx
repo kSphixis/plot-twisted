@@ -17,7 +17,7 @@ import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
 import { spacing } from '../theme/spacing';
 
-const MIN_PLAYERS = 5;
+const MIN_PLAYERS = 2;
 const MAX_PLAYERS = 10;
 
 export default function PlayerSetupScreen() {

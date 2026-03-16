@@ -161,8 +161,9 @@ export default function VoteScreen() {
                   </TouchableOpacity>
                   <Text style={styles.counterValue}>{count}</Text>
                   <TouchableOpacity
-                    style={styles.counterBtn}
+                    style={[styles.counterBtn, totalVotes >= players.length && styles.counterBtnDisabled]}
                     onPress={() => increment(option.label)}
+                    disabled={totalVotes >= players.length}
                   >
                     <Text style={styles.counterBtnText}>+</Text>
                   </TouchableOpacity>
@@ -174,11 +175,14 @@ export default function VoteScreen() {
       </ScrollView>
 
       <View style={styles.bottom}>
+        <Text style={styles.voteCount}>
+          {totalVotes} / {players.length} votes
+        </Text>
         <BigButton
           title="See Results"
           onPress={handleSeeResults}
           color={colors.voteColor}
-          disabled={totalVotes === 0}
+          disabled={totalVotes !== players.length}
         />
       </View>
     </SafeAreaView>
@@ -278,6 +282,12 @@ const styles = StyleSheet.create({
   resultCount: {
     ...typography.label,
     color: colors.textSecondary,
+  } as TextStyle,
+  voteCount: {
+    ...typography.label,
+    color: colors.textSecondary,
+    textAlign: 'center',
+    marginBottom: spacing.sm,
   } as TextStyle,
   bottom: {
     paddingHorizontal: spacing.xl,

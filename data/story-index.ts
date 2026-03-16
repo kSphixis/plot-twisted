@@ -15,7 +15,7 @@ export const storyIndex: StoryMeta[] = [
     title: 'The Haunted House',
     description: 'Your group dares to explore an abandoned mansion. What could go wrong?',
     theme: 'horror',
-    playerCount: { min: 5, max: 10 },
+    playerCount: { min: 2, max: 10 },
     estimatedMinutes: 15,
   },
   {
@@ -23,7 +23,7 @@ export const storyIndex: StoryMeta[] = [
     title: 'Road Trip from Hell',
     description: 'A simple road trip spirals into chaos. Buckle up.',
     theme: 'comedy',
-    playerCount: { min: 5, max: 8 },
+    playerCount: { min: 2, max: 8 },
     estimatedMinutes: 12,
   },
 ];
