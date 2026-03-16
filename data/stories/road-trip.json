@@ -1,0 +1,225 @@
+{
+  "id": "road-trip",
+  "title": "Road Trip from Hell",
+  "description": "A simple road trip spirals into chaos. Buckle up.",
+  "theme": "comedy",
+  "playerCount": { "min": 5, "max": 8 },
+  "estimatedMinutes": 12,
+  "entryNodeId": "intro",
+  "nodes": {
+    "intro": {
+      "id": "intro",
+      "type": "narrative",
+      "text": {
+        "mild": "{{current}} rented a van for the weekend. The plan: drive to the coast. Simple. Easy. Nothing could go wrong. Everyone piles in. {{next}} calls shotgun.",
+        "wild": "{{current}} 'borrowed' a van from a cousin. The plan: drive to the coast. The van smells like old tacos and regret. Everyone piles in. {{next}} calls shotgun but the seat is stuck reclined all the way back."
+      },
+      "nextNodeId": "music-choice"
+    },
+    "music-choice": {
+      "id": "music-choice",
+      "type": "vote",
+      "text": {
+        "mild": "First order of business: what music are we playing?",
+        "wild": "A fight immediately breaks out over the aux cord. This will define the entire trip. VOTE."
+      },
+      "options": [
+        {
+          "label": "Road trip classics",
+          "nextNodeId": "driving-classics"
+        },
+        {
+          "label": "Driver's choice",
+          "nextNodeId": "driving-driver"
+        }
+      ]
+    },
+    "driving-classics": {
+      "id": "driving-classics",
+      "type": "narrative",
+      "text": {
+        "mild": "Classic road trip jams it is. Everyone's singing along. Life is good. Then the GPS says 'recalculating' for the third time.",
+        "wild": "Classic road trip jams blast through the one working speaker. Everyone's screaming the lyrics. Life is chaotic. Then the GPS starts giving directions in what sounds like Latin."
+      },
+      "nextNodeId": "gas-station"
+    },
+    "driving-driver": {
+      "id": "driving-driver",
+      "type": "dare",
+      "text": {
+        "mild": "{{current}} has the aux. Sing the chorus of your favorite road trip song right now!",
+        "wild": "{{current}} has the aux and immediately plays their guilty pleasure song. Sing it LOUD and PROUD for the group!"
+      },
+      "targetPlayer": { "type": "current" },
+      "durationSeconds": 15,
+      "nextNodeId": "gas-station"
+    },
+    "gas-station": {
+      "id": "gas-station",
+      "type": "narrative",
+      "text": {
+        "mild": "You pull into a gas station. It's one of those middle-of-nowhere places with a single pump and a guy who just stares at you.",
+        "wild": "You pull into a gas station that looks like it hasn't been updated since 1974. The attendant has an eye patch and a parrot. The parrot says 'turn back.'"
+      },
+      "nextNodeId": "gas-drink"
+    },
+    "gas-drink": {
+      "id": "gas-drink",
+      "type": "drink",
+      "text": {
+        "mild": "{{current}} buys everyone snacks from inside. Cheers to the road trip! Take a sip.",
+        "wild": "{{current}} comes out of the gas station with the most suspicious energy drink you've ever seen. It's glowing. Drink up!"
+      },
+      "targetPlayer": { "type": "random" },
+      "soberAlternative": {
+        "text": {
+          "mild": "{{current}} buys everyone mystery snacks. Eat an imaginary mystery snack and describe its flavor!",
+          "wild": "{{current}} buys a snack with a label in a language nobody recognizes. Describe what it tastes like using only sound effects!"
+        },
+        "type": "dare",
+        "dareDuration": 10
+      },
+      "nextNodeId": "detour-choice"
+    },
+    "detour-choice": {
+      "id": "detour-choice",
+      "type": "choice",
+      "text": {
+        "mild": "Back on the road, you see a sign: 'Scenic Overlook — 2 miles' and another: 'World's Largest Ball of Yarn — 5 miles.' The coast is straight ahead.",
+        "wild": "Back on the road, you see a sign: 'DO NOT ENTER — Scenic Overlook' and another: 'World's Most Cursed Ball of Yarn — 5 miles.' The GPS is recalculating again."
+      },
+      "choices": [
+        {
+          "label": "Scenic overlook",
+          "nextNodeId": "overlook"
+        },
+        {
+          "label": "Ball of yarn",
+          "nextNodeId": "yarn"
+        },
+        {
+          "label": "Stay on course",
+          "nextNodeId": "highway"
+        }
+      ]
+    },
+    "overlook": {
+      "id": "overlook",
+      "type": "narrative",
+      "text": {
+        "mild": "The scenic overlook is actually stunning. {{current}} takes a panoramic photo. {{next}} pretends to push someone off the edge. Classic.",
+        "wild": "The scenic overlook is breathtaking. {{current}} is trying to get the perfect selfie and almost falls off the cliff. {{next}} saves them at the last second and will never let them forget it."
+      },
+      "nextNodeId": "overlook-dare"
+    },
+    "overlook-dare": {
+      "id": "overlook-dare",
+      "type": "dare",
+      "text": {
+        "mild": "{{current}}, strike your most dramatic 'standing on a cliff' pose and hold it!",
+        "wild": "{{current}}, do your best impression of someone in a shampoo commercial with the wind in their hair!"
+      },
+      "targetPlayer": { "type": "next" },
+      "durationSeconds": 8,
+      "nextNodeId": "final-stretch"
+    },
+    "yarn": {
+      "id": "yarn",
+      "type": "narrative",
+      "text": {
+        "mild": "The World's Largest Ball of Yarn is... actually just a big ball of yarn. But the gift shop is incredible. {{current}} buys a tiny yarn ball keychain.",
+        "wild": "The World's Most Cursed Ball of Yarn is seven stories tall and appears to be breathing. The gift shop sells 'I survived the Yarn' t-shirts. {{current}} buys five."
+      },
+      "nextNodeId": "yarn-vote"
+    },
+    "yarn-vote": {
+      "id": "yarn-vote",
+      "type": "vote",
+      "text": {
+        "mild": "The yarn museum guide offers a private tour. It's getting late. Do you stay?",
+        "wild": "The yarn museum guide, who definitely lives inside the yarn, offers a 'special midnight tour.' It's almost sunset. Do you stay?"
+      },
+      "options": [
+        {
+          "label": "Take the tour",
+          "nextNodeId": "yarn-tour"
+        },
+        {
+          "label": "Get out of here",
+          "nextNodeId": "final-stretch"
+        }
+      ]
+    },
+    "yarn-tour": {
+      "id": "yarn-tour",
+      "type": "drink",
+      "text": {
+        "mild": "The tour is actually fascinating! The guide shares homemade lemonade. {{current}}, take a sip to toast this cultural experience.",
+        "wild": "The tour is WILD. The guide tells you the yarn once ate a man. He offers everyone homemade 'yarn juice.' {{current}}, bottoms up."
+      },
+      "targetPlayer": { "type": "current" },
+      "nextNodeId": "final-stretch"
+    },
+    "highway": {
+      "id": "highway",
+      "type": "narrative",
+      "text": {
+        "mild": "You stay on course like responsible adults. The highway stretches on. {{current}} starts a game of 'I Spy' that gets surprisingly intense.",
+        "wild": "You stay on course. Big mistake. The highway turns into a one-lane road. Then a dirt road. Then what can only be described as a suggestion of a road."
+      },
+      "nextNodeId": "highway-drink"
+    },
+    "highway-drink": {
+      "id": "highway-drink",
+      "type": "drink",
+      "text": {
+        "mild": "The drive is getting long. {{current}}, the navigator, needs a refreshment. Take a sip!",
+        "wild": "{{current}} has been navigating with a paper map upside down for the last hour. Take a penalty drink!"
+      },
+      "targetPlayer": { "type": "current" },
+      "soberAlternative": {
+        "text": {
+          "mild": "{{current}} needs to stay alert as navigator. Do 10 jumping jacks to wake up!",
+          "wild": "{{current}} has been holding the map upside down. Spin around 5 times as punishment!"
+        },
+        "type": "dare",
+        "dareDuration": 10
+      },
+      "nextNodeId": "final-stretch"
+    },
+    "final-stretch": {
+      "id": "final-stretch",
+      "type": "choice",
+      "text": {
+        "mild": "You can see the coast! But there's a fork in the road. One way leads to a busy beach town, the other to a secluded cove.",
+        "wild": "You can SMELL the ocean! But there's a fork in the road. One sign says 'BEACH PARTY' with flashing lights. The other says 'Secret Cove' with a hand-painted skull beneath it."
+      },
+      "choices": [
+        {
+          "label": "Beach town",
+          "nextNodeId": "ending-beach"
+        },
+        {
+          "label": "Secret cove",
+          "nextNodeId": "ending-cove"
+        }
+      ]
+    },
+    "ending-beach": {
+      "id": "ending-beach",
+      "type": "conclusion",
+      "text": {
+        "mild": "You arrive at the beach town just as the sun starts to set. The boardwalk is alive with music and lights. {{all}} pile out of the van and race to the water. The road trip was worth every wrong turn.",
+        "wild": "You CRASH into the beach town like a hurricane. The van backfires and sets off a car alarm. {{current}} falls out of the van before it stops moving. {{all}} hit the boardwalk and become legends by midnight. Best. Trip. Ever."
+      }
+    },
+    "ending-cove": {
+      "id": "ending-cove",
+      "type": "conclusion",
+      "text": {
+        "mild": "The secret cove is paradise. Crystal clear water, not another soul in sight. {{all}} spend the evening around a bonfire, telling stories about the drive. This is why you road trip.",
+        "wild": "The secret cove is UNREAL. Turquoise water, perfect sand, and a mysterious cooler that someone left behind full of snacks. {{all}} claim it as your own private beach. {{current}} declares themselves mayor. Nobody argues because they control the snacks."
+      }
+    }
+  }
+}

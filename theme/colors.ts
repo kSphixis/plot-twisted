@@ -1,0 +1,15 @@
+export const colors = {
+  background: '#0D0D0D',
+  surface: '#1A1A1A',
+  surfaceLight: '#2A2A2A',
+  textPrimary: '#F5F5F5',
+  textSecondary: '#A0A0A0',
+  accent: '#F5A623',
+  accentDim: '#C4841C',
+  danger: '#E74C3C',
+  success: '#2ECC71',
+  drinkColor: '#3498DB',
+  dareColor: '#E67E22',
+  voteColor: '#9B59B6',
+  border: '#333333',
+} as const;

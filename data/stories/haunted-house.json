@@ -1,0 +1,270 @@
+{
+  "id": "haunted-house",
+  "title": "The Haunted House",
+  "description": "Your group dares to explore an abandoned mansion. What could go wrong?",
+  "theme": "horror",
+  "playerCount": { "min": 5, "max": 10 },
+  "estimatedMinutes": 15,
+  "entryNodeId": "intro",
+  "nodes": {
+    "intro": {
+      "id": "intro",
+      "type": "narrative",
+      "text": {
+        "mild": "The old Blackwood Mansion looms before you, its windows dark and broken. {{current}} was the one who suggested coming here. The front door creaks open on its own.",
+        "wild": "The old Blackwood Mansion looms before you, its windows shattered and dripping with something dark. {{current}} lost a bet and now the whole group has to go inside. The front door SLAMS open."
+      },
+      "nextNodeId": "enter-choice"
+    },
+    "enter-choice": {
+      "id": "enter-choice",
+      "type": "choice",
+      "text": {
+        "mild": "You all stand at the threshold. A cold draft blows from inside. What does the group do?",
+        "wild": "You all stand at the threshold. Something inside GROWLS. What does the group do?"
+      },
+      "choices": [
+        {
+          "label": "Go in through the front door",
+          "nextNodeId": "front-hall"
+        },
+        {
+          "label": "Sneak around to the back",
+          "nextNodeId": "back-entrance"
+        }
+      ]
+    },
+    "front-hall": {
+      "id": "front-hall",
+      "type": "narrative",
+      "text": {
+        "mild": "You enter the dusty front hall. A grand staircase leads up, and a hallway stretches into darkness. Portraits on the wall seem to follow you with their eyes.",
+        "wild": "You enter the front hall and the door SLAMS shut behind you. {{current}} screams. A grand staircase leads up, and a hallway stretches into pitch darkness. The portraits on the wall are definitely watching you."
+      },
+      "nextNodeId": "front-hall-drink"
+    },
+    "front-hall-drink": {
+      "id": "front-hall-drink",
+      "type": "drink",
+      "text": {
+        "mild": "{{current}}, you touched a dusty painting and your hand is now covered in something sticky. Take a sip to steady your nerves.",
+        "wild": "{{current}}, you touched a dusty painting and it MOANED. Take two big sips for being so bold."
+      },
+      "targetPlayer": { "type": "current" },
+      "soberAlternative": {
+        "text": {
+          "mild": "{{current}}, you touched a dusty painting. Do your best impression of a ghost for 5 seconds.",
+          "wild": "{{current}}, you touched a painting and it MOANED back. Do your scariest ghost impression for 10 seconds."
+        },
+        "type": "dare",
+        "dareDuration": 5
+      },
+      "nextNodeId": "hallway-choice"
+    },
+    "back-entrance": {
+      "id": "back-entrance",
+      "type": "narrative",
+      "text": {
+        "mild": "You creep around to the back. The garden is overgrown and dead. A cellar door sits half-open in the ground.",
+        "wild": "You creep around back. The garden is full of dead roses and what looks like freshly dug holes. A cellar door sits half-open, and something is breathing down there."
+      },
+      "nextNodeId": "back-dare"
+    },
+    "back-dare": {
+      "id": "back-dare",
+      "type": "dare",
+      "text": {
+        "mild": "{{current}}, you're the bravest. Make your scariest face and hold it for the countdown!",
+        "wild": "{{current}}, prove you're not scared. Make the most terrifying sound you can and hold it for the countdown!"
+      },
+      "targetPlayer": { "type": "current" },
+      "durationSeconds": 5,
+      "nextNodeId": "hallway-choice"
+    },
+    "hallway-choice": {
+      "id": "hallway-choice",
+      "type": "choice",
+      "text": {
+        "mild": "You find yourselves in a long hallway. To the left, a library with flickering candlelight. To the right, a dining room with the table set for dinner. Straight ahead, stairs going down to the basement.",
+        "wild": "You find yourselves in a long hallway. To the left, a library where books are floating off the shelves. To the right, a dining room where the food is still steaming. Straight ahead, the basement — you can hear chanting."
+      },
+      "choices": [
+        {
+          "label": "Enter the library",
+          "nextNodeId": "library"
+        },
+        {
+          "label": "Check out the dining room",
+          "nextNodeId": "dining-room"
+        },
+        {
+          "label": "Go to the basement",
+          "nextNodeId": "basement-vote"
+        }
+      ]
+    },
+    "library": {
+      "id": "library",
+      "type": "narrative",
+      "text": {
+        "mild": "The library is enormous. Candles flicker on their own. {{current}} finds an old leather journal on a desk. It reads: 'They came for dinner. They never left.'",
+        "wild": "The library is enormous and the books are rearranging themselves. {{current}} finds a journal that OPENS ITSELF. It reads: 'They came for dinner. They never left. Neither will you.'"
+      },
+      "nextNodeId": "library-drink"
+    },
+    "library-drink": {
+      "id": "library-drink",
+      "type": "drink",
+      "text": {
+        "mild": "The journal reveals that reading it aloud breaks a curse. {{current}} and {{next}}, take a sip for being the chosen readers.",
+        "wild": "The journal starts SCREAMING. {{current}} and {{next}}, take two sips each to drown out the sound."
+      },
+      "targetPlayer": { "type": "current" },
+      "nextNodeId": "library-discovery"
+    },
+    "library-discovery": {
+      "id": "library-discovery",
+      "type": "narrative",
+      "text": {
+        "mild": "Behind a bookshelf, you discover a hidden passage leading down. Old stone steps spiral into the earth.",
+        "wild": "A bookshelf SLIDES OPEN revealing a hidden passage. Cold air rushes up from below, carrying whispers of your names."
+      },
+      "nextNodeId": "final-choice"
+    },
+    "dining-room": {
+      "id": "dining-room",
+      "type": "narrative",
+      "text": {
+        "mild": "The dining room table is set for exactly the number of people in your group. The food looks fresh. Place cards have names on them... YOUR names.",
+        "wild": "The dining room table is set with YOUR names on place cards. The food is warm. A note in the center reads: 'Eat up. You'll need your strength for what comes next.'"
+      },
+      "nextNodeId": "dining-vote"
+    },
+    "dining-vote": {
+      "id": "dining-vote",
+      "type": "vote",
+      "text": {
+        "mild": "Someone should taste the food. Who's brave enough?",
+        "wild": "The food smells incredible but this is DEEPLY suspicious. Who gets sacrificed as the taste-tester?"
+      },
+      "options": [
+        {
+          "label": "Eat the food",
+          "nextNodeId": "ate-food"
+        },
+        {
+          "label": "Don't touch it",
+          "nextNodeId": "reject-food"
+        }
+      ]
+    },
+    "ate-food": {
+      "id": "ate-food",
+      "type": "narrative",
+      "text": {
+        "mild": "The food is... actually delicious? But then the candles go out. When they relight, the plates are empty and the room has changed. A new door has appeared.",
+        "wild": "The food is incredible! But then ALL the candles explode out. When they relight, everyone is sitting in different chairs. A new door has appeared and it's PULSING."
+      },
+      "nextNodeId": "final-choice"
+    },
+    "reject-food": {
+      "id": "reject-food",
+      "type": "narrative",
+      "text": {
+        "mild": "Smart choice. As you back away, the food rots in seconds, turning to dust. A door behind the head of the table creaks open.",
+        "wild": "The moment you refuse, the food LUNGES off the plates toward you! You dodge and it splatters against the wall, revealing a hidden door."
+      },
+      "nextNodeId": "reject-food-dare"
+    },
+    "reject-food-dare": {
+      "id": "reject-food-dare",
+      "type": "dare",
+      "text": {
+        "mild": "{{current}}, the ghost is offended you didn't eat. Apologize to the empty room as dramatically as possible!",
+        "wild": "{{current}}, the ghost chef is FURIOUS. Get on your knees and beg forgiveness from the empty chair at the head of the table!"
+      },
+      "targetPlayer": { "type": "random" },
+      "durationSeconds": 10,
+      "nextNodeId": "final-choice"
+    },
+    "basement-vote": {
+      "id": "basement-vote",
+      "type": "vote",
+      "text": {
+        "mild": "The basement stairs look dark and dangerous. Who goes first?",
+        "wild": "The chanting from below is getting LOUDER. Someone has to lead the way down. Who's the sacrifice— er, volunteer?"
+      },
+      "options": [
+        {
+          "label": "Go together",
+          "nextNodeId": "basement-together"
+        },
+        {
+          "label": "Send someone alone",
+          "nextNodeId": "basement-alone"
+        }
+      ]
+    },
+    "basement-together": {
+      "id": "basement-together",
+      "type": "narrative",
+      "text": {
+        "mild": "You all go down together, holding onto each other. The basement is full of old wine barrels and cobwebs. In the center, a glowing circle on the floor.",
+        "wild": "You all stumble down together. {{current}} trips and takes everyone down the last three steps. The basement is enormous — and in the center, a glowing pentagram pulses with light."
+      },
+      "nextNodeId": "final-choice"
+    },
+    "basement-alone": {
+      "id": "basement-alone",
+      "type": "drink",
+      "text": {
+        "mild": "{{current}} went alone and found a wine cellar! Take a celebratory sip.",
+        "wild": "{{current}} went alone and discovered the ghost's personal stash. Take a big drink — you earned it, you lunatic."
+      },
+      "targetPlayer": { "type": "current" },
+      "soberAlternative": {
+        "text": {
+          "mild": "{{current}} went alone and found an old music box. Do a spooky dance for the group!",
+          "wild": "{{current}} went alone and a ghost tried to dance with them. Show the group the dance!"
+        },
+        "type": "dare",
+        "dareDuration": 8
+      },
+      "nextNodeId": "final-choice"
+    },
+    "final-choice": {
+      "id": "final-choice",
+      "type": "choice",
+      "text": {
+        "mild": "You've found the heart of the mansion. A ghostly figure appears and offers you a choice: face the truth of this house, or run and never look back.",
+        "wild": "A MASSIVE ghost materializes before you. 'YOU DARE ENTER MY HOME?' it bellows. 'Now you must choose your fate!'"
+      },
+      "choices": [
+        {
+          "label": "Face the truth",
+          "nextNodeId": "ending-brave"
+        },
+        {
+          "label": "Run for your lives",
+          "nextNodeId": "ending-run"
+        }
+      ]
+    },
+    "ending-brave": {
+      "id": "ending-brave",
+      "type": "conclusion",
+      "text": {
+        "mild": "You stand your ground. The ghost smiles and fades away. The mansion transforms — lights come on, dust vanishes. You find a treasure chest with a note: 'Congratulations, you passed the test.' {{all}} survived the Blackwood Mansion!",
+        "wild": "You stand your ground and SCREAM back at the ghost. It looks shocked, then starts LAUGHING. The mansion transforms into a beautiful home. A note appears: 'Finally, guests with backbone.' {{all}} are now the proud new owners of a haunted mansion!"
+      }
+    },
+    "ending-run": {
+      "id": "ending-run",
+      "type": "conclusion",
+      "text": {
+        "mild": "You bolt for the exit. The doors fly open and you tumble onto the lawn. The mansion groans behind you and the lights go dark. You made it out alive... but {{current}} swears they can still hear whispering.",
+        "wild": "You RUN. The mansion literally tries to eat you — floors collapse, walls close in. You burst through a window and land in the garden. The mansion IMPLODES behind you. {{current}} lost a shoe. {{next}} is missing an eyebrow. But you're alive!"
+      }
+    }
+  }
+}
